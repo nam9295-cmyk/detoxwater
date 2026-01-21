@@ -10,19 +10,19 @@ const TEA_PRODUCTS = {
         baseColor: '#8B0000',
         available: true,
         ingredients: {
-            doraji: {
-                name: '도라지',
-                emoji: '🌾',
-                stats: { respiratory: 10, immunity: 8, digestion: 5, energy: 3, relaxation: 4 },
-                flavor: { sweet: 2, bitter: 8, nutty: 5, body: 4, aroma: 3 },
-                color: '#E8D4A8'
-            },
             cacao: {
                 name: '카카오',
                 emoji: '🫘',
                 stats: { respiratory: 2, immunity: 6, digestion: 4, energy: 5, relaxation: 9 },
                 flavor: { sweet: 3, bitter: 5, nutty: 10, body: 9, aroma: 6 },
                 color: '#8B4513'
+            },
+            doraji: {
+                name: '도라지',
+                emoji: '🌾',
+                stats: { respiratory: 10, immunity: 8, digestion: 5, energy: 3, relaxation: 4 },
+                flavor: { sweet: 2, bitter: 8, nutty: 5, body: 4, aroma: 3 },
+                color: '#E8D4A8'
             },
             tea: {
                 name: '홍차',
@@ -266,7 +266,7 @@ function App() {
         <div className="min-h-screen flex flex-col items-center justify-start py-4 px-3 md:py-6 md:px-6 overflow-x-hidden">
             {/* 헤더 */}
             <h1 className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-1 text-center bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-400">
-                🍵 티 블렌딩 시뮬레이션
+                🍵 Cacao Detox Cleanse Water
             </h1>
             <p className="text-white/60 mb-4 text-center text-xs md:text-sm">{currentTea.desc}</p>
 
