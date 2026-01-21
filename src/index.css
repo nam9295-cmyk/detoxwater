@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  min-height: 100vh;
+}
+
+/* Custom slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  height: 24px;
+  touch-action: none;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+/* Webkit (Chrome, Safari, Edge) */
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-top: -8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  cursor: grab;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.15);
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  cursor: grab;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Slider specific colors - Webkit */
+.slider-doraji::-webkit-slider-thumb {
+  background: linear-gradient(135deg, #E8D4A8 0%, #C5A86B 100%);
+}
+
+.slider-cacao::-webkit-slider-thumb {
+  background: linear-gradient(135deg, #8B4513 0%, #5D2E0C 100%);
+}
+
+.slider-tea::-webkit-slider-thumb {
+  background: linear-gradient(135deg, #B8423F 0%, #8B2E2C 100%);
+}
+
+/* Slider specific colors - Firefox */
+.slider-doraji::-moz-range-thumb {
+  background: linear-gradient(135deg, #E8D4A8 0%, #C5A86B 100%);
+}
+
+.slider-cacao::-moz-range-thumb {
+  background: linear-gradient(135deg, #8B4513 0%, #5D2E0C 100%);
+}
+
+.slider-tea::-moz-range-thumb {
+  background: linear-gradient(135deg, #B8423F 0%, #8B2E2C 100%);
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+}
+
+/* Teapot container - 반응형 */
+.teapot-container {
+  position: relative;
+  width: clamp(280px, 80vw, 500px);
+  height: clamp(280px, 80vw, 500px);
+  max-width: 100%;
+}
+
+/* Teapot container - 작은 버전 (RPG 스타일) */
+.teapot-container-small {
+  position: relative;
+  width: clamp(200px, 50vw, 280px);
+  height: clamp(200px, 50vw, 280px);
+}
+
+/* Liquid layer with mask */
+.liquid-layer {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: url('/images/teapot_mask.png');
+  mask-image: url('/images/teapot_mask.png');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transition: background-color 0.3s ease;
+}
+
+/* Liquid layer - 작은 버전 */
+.liquid-layer-small {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: url('/images/teapot_mask.png');
+  mask-image: url('/images/teapot_mask.png');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transition: background-color 0.2s ease;
+}
+
+/* Teapot overlay */
+.teapot-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/teapot_empty.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+}
+
+/* Teapot overlay - 작은 버전 */
+.teapot-overlay-small {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/teapot_empty.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+}
+
+/* Glow effect */
+.glow-effect {
+  filter: drop-shadow(0 0 30px rgba(255, 200, 100, 0.3));
+}
+
+/* Animation */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Bubble animation */
+@keyframes bubble {
+  0% {
+    transform: translateY(100%) scale(0);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-100%) scale(1);
+    opacity: 0;
+  }
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  animation: bubble 3s ease-in-out infinite;
+}
