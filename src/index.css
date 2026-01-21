@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,9 +11,19 @@
 }
 
 body {
-  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #F9F5F0;
+  color: #3E2723;
   min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Playfair Display', serif;
 }
 
 /* Custom slider styling */
@@ -32,93 +44,69 @@ input[type="range"]:focus {
 /* Webkit (Chrome, Safari, Edge) */
 input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
-  height: 8px;
-  border-radius: 4px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(62, 39, 35, 0.1);
   cursor: pointer;
 }
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  margin-top: -8px;
-  background: var(--slider-color, #F59E0B);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  margin-top: -7px;
+  background: radial-gradient(circle at 30% 30%, #D4AF37, #8B5E3C 40%, #5D4037 80%);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.4);
+  border: none;
   cursor: grab;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.2);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
 }
 
 input[type="range"]::-webkit-slider-thumb:active {
   cursor: grabbing;
-  transform: scale(1.15);
+  transform: scale(1.05);
 }
 
 /* Firefox */
 input[type="range"]::-moz-range-track {
   width: 100%;
-  height: 8px;
-  border-radius: 4px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(62, 39, 35, 0.1);
   cursor: pointer;
 }
 
 input[type="range"]::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: var(--slider-color, #F59E0B);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  border: none;
+  background: radial-gradient(circle at 30% 30%, #D4AF37, #8B5E3C 40%, #5D4037 80%);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.4);
   cursor: grab;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 input[type="range"]::-moz-range-thumb:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.2);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* Slider specific colors - Webkit */
-.slider-doraji::-webkit-slider-thumb {
-  background: linear-gradient(135deg, #E8D4A8 0%, #C5A86B 100%);
-}
-
-.slider-cacao::-webkit-slider-thumb {
-  background: linear-gradient(135deg, #8B4513 0%, #5D2E0C 100%);
-}
-
-.slider-tea::-webkit-slider-thumb {
-  background: linear-gradient(135deg, #B8423F 0%, #8B2E2C 100%);
-}
-
-/* Slider specific colors - Firefox */
-.slider-doraji::-moz-range-thumb {
-  background: linear-gradient(135deg, #E8D4A8 0%, #C5A86B 100%);
-}
-
-.slider-cacao::-moz-range-thumb {
-  background: linear-gradient(135deg, #8B4513 0%, #5D2E0C 100%);
-}
-
-.slider-tea::-moz-range-thumb {
-  background: linear-gradient(135deg, #B8423F 0%, #8B2E2C 100%);
-}
-
-/* Glassmorphism card */
-.glass-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Glassmorphism control panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  /* Antique Gold tint */
+  box-shadow: 0 8px 32px rgba(62, 39, 35, 0.05);
   border-radius: 24px;
 }
 

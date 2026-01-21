@@ -133,21 +133,20 @@ const FLAVOR_COLORS = ['#F472B6', '#FB923C', '#A78BFA', '#38BDF8', '#4ADE80']
 // 슬라이더 컴포넌트
 function Slider({ label, value, onChange, color, emoji }) {
     return (
-        <div className="flex items-center gap-2">
-            <span className="text-lg">{emoji}</span>
-            <span className="text-white/80 text-sm w-14 flex-shrink-0">{label}</span>
+        <div className="flex items-center gap-3">
+            <span className="text-xl filter drop-shadow-sm">{emoji}</span>
+            <span className="text-[#3E2723] font-medium text-sm w-16 flex-shrink-0 font-sans tracking-wide">{label}</span>
             <input
                 type="range"
                 min="0"
                 max="100"
                 value={value}
                 onInput={(e) => onChange(Number(e.target.value))}
-                className="flex-1 h-5 slider-custom"
-                style={{ cursor: 'pointer', '--slider-color': color }}
+                className="flex-1 h-6 cursor-pointer"
             />
             <span
-                className="px-2 py-0.5 rounded-full text-xs font-bold w-12 text-center flex-shrink-0"
-                style={{ backgroundColor: `${color}33`, color: color }}
+                className="px-2 py-1 rounded-full text-xs font-bold w-12 text-center flex-shrink-0 shadow-sm"
+                style={{ backgroundColor: '#fff', color: '#3E2723', border: '1px solid #E0E0E0' }}
             >
                 {value}%
             </span>
@@ -263,24 +262,26 @@ function App() {
     }, [currentTea, ingredientKeys, values])
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-start py-4 px-3 md:py-6 md:px-6 overflow-x-hidden">
+        <div className="min-h-screen flex flex-col items-center justify-start py-8 px-4 md:py-12 md:px-8 overflow-x-hidden bg-[#F9F5F0]">
             {/* 헤더 */}
-            <h1 className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-1 text-center bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-400">
-                🍵 Cacao Detox Cleanse Water
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#3E2723] mb-2 text-center font-serif tracking-tight">
+                Very Good Chocolate
             </h1>
-            <p className="text-white/60 mb-4 text-center text-xs md:text-sm">{currentTea.desc}</p>
+            <p className="text-[#3E2723]/70 mb-8 text-center text-sm md:text-base font-sans tracking-wide">
+                {currentTea.desc}
+            </p>
 
             {/* 탭 메뉴 */}
-            <div className="flex gap-2 mb-4 flex-wrap justify-center">
+            <div className="flex gap-3 mb-8 flex-wrap justify-center">
                 {Object.values(TEA_PRODUCTS).map((tea) => (
                     <button
                         key={tea.id}
                         onClick={() => handleTabClick(tea.id)}
-                        className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${selectedTea === tea.id
-                            ? 'bg-amber-500 text-white shadow-lg'
+                        className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 font-sans tracking-wide ${selectedTea === tea.id
+                            ? 'bg-[#3E2723] text-[#D4AF37] shadow-lg transform scale-105'
                             : tea.available
-                                ? 'bg-white/10 text-white/70 hover:bg-white/20'
-                                : 'bg-white/5 text-white/30 cursor-not-allowed'
+                                ? 'bg-white border border-[#D4AF37]/30 text-[#3E2723]/70 hover:bg-[#D4AF37]/10 hover:text-[#3E2723] hover:border-[#D4AF37]'
+                                : 'bg-gray-100 text-gray-400 cursor-not-allowed'
                             }`}
                     >
                         {tea.name}
@@ -289,50 +290,44 @@ function App() {
             </div>
 
             {/* 메인: 티팟 + 차트 */}
-            <div className="flex flex-row items-center justify-center gap-4 md:gap-6 w-full max-w-3xl mb-4">
+            <div className="flex flex-row items-center justify-center gap-6 md:gap-12 w-full max-w-4xl mb-8">
                 {/* 티팟 */}
                 <div className="relative flex-shrink-0">
                     <div
-                        className="absolute inset-0 blur-3xl opacity-40 rounded-full"
-                        style={{ backgroundColor: liquidColor, transform: 'scale(0.6)' }}
+                        className="absolute inset-0 blur-3xl opacity-30 rounded-full"
+                        style={{ backgroundColor: liquidColor, transform: 'scale(0.7)' }}
                     />
-                    <div className="teapot-container-small float-animation glow-effect">
+                    <div className="teapot-container-small float-animation">
                         <div className="liquid-layer-small" style={{ backgroundColor: liquidColor }} />
                         <div className="teapot-overlay-small" />
                     </div>
                 </div>
 
                 {/* 차트들 */}
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-4">
                     {/* 건강 밸런스 */}
-                    <div className="glass-card p-2">
-                        <h3 className="text-white/80 text-xs font-medium mb-1 text-center">💪 건강 밸런스</h3>
-                        <div className="w-28 h-28 md:w-32 md:h-32">
+                    <div className="glass-panel p-4">
+                        <h3 className="text-[#3E2723] text-sm font-serif font-bold mb-2 text-center">Health Balance</h3>
+                        <div className="w-32 h-32 md:w-36 md:h-36">
                             <ResponsiveContainer width="100%" height="100%">
-                                <RadarChart cx="50%" cy="50%" outerRadius="75%" data={healthData}>
-                                    <PolarGrid stroke="rgba(255,255,255,0.2)" strokeWidth={1} />
-                                    <PolarAngleAxis dataKey="stat" tick={{ fill: 'rgba(255,255,255,0.8)', fontSize: 8 }} tickLine={false} />
+                                <RadarChart cx="50%" cy="50%" outerRadius="60%" data={healthData}>
+                                    <PolarGrid stroke="#D4AF37" strokeOpacity={0.3} />
+                                    <PolarAngleAxis dataKey="stat" tick={{ fill: '#5D4037', fontSize: 10, fontWeight: 500 }} tickLine={false} />
                                     <PolarRadiusAxis angle={90} domain={[0, 10]} tick={false} axisLine={false} />
-                                    <Radar dataKey="value" stroke="#F59E0B" strokeWidth={2} fill="url(#goldGradient)" fillOpacity={0.5} isAnimationActive={true} animationDuration={200} />
-                                    <defs>
-                                        <linearGradient id="goldGradient" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="0%" stopColor="#F59E0B" stopOpacity={0.8} />
-                                            <stop offset="100%" stopColor="#D97706" stopOpacity={0.4} />
-                                        </linearGradient>
-                                    </defs>
+                                    <Radar dataKey="value" stroke="#D4AF37" strokeWidth={2} fill="#D4AF37" fillOpacity={0.4} isAnimationActive={true} animationDuration={200} />
                                 </RadarChart>
                             </ResponsiveContainer>
                         </div>
                     </div>
 
                     {/* 맛 프로필 */}
-                    <div className="glass-card p-2">
-                        <h3 className="text-white/80 text-xs font-medium mb-1 text-center">📊 맛 프로필</h3>
-                        <div className="w-28 h-28 md:w-32 md:h-32">
+                    <div className="glass-panel p-4">
+                        <h3 className="text-[#3E2723] text-sm font-serif font-bold mb-2 text-center">Flavor Profile</h3>
+                        <div className="w-32 h-32 md:w-36 md:h-36">
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={flavorData} layout="vertical" margin={{ top: 0, right: 5, bottom: 0, left: 0 }}>
                                     <XAxis type="number" domain={[0, 10]} hide />
-                                    <YAxis type="category" dataKey="name" width={28} tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 7 }} axisLine={false} tickLine={false} />
+                                    <YAxis type="category" dataKey="name" width={32} tick={{ fill: '#5D4037', fontSize: 9, fontWeight: 500 }} axisLine={false} tickLine={false} />
                                     <Bar dataKey="value" radius={[0, 4, 4, 0]} isAnimationActive={true} animationDuration={200}>
                                         {flavorData.map((_, index) => (
                                             <Cell key={`cell-${index}`} fill={FLAVOR_COLORS[index]} />
@@ -346,13 +341,13 @@ function App() {
             </div>
 
             {/* 슬라이더 */}
-            <div className="glass-card p-3 w-full max-w-md">
-                <div className="flex items-center gap-2 mb-2">
-                    <span>🎨</span>
-                    <span className="text-sm font-semibold text-white">재료 조절</span>
-                    <div className="ml-auto w-5 h-5 rounded-full shadow border border-white/20" style={{ backgroundColor: liquidColor }} />
+            <div className="glass-panel p-6 w-full max-w-lg shadow-2xl">
+                <div className="flex items-center gap-2 mb-4 border-b border-[#D4AF37]/20 pb-2">
+                    <span className="text-xl">👩‍🍳</span>
+                    <span className="text-base font-bold text-[#3E2723] font-serif">Blending Control</span>
+                    <div className="ml-auto w-6 h-6 rounded-full shadow-inner border border-[#3E2723]/10" style={{ backgroundColor: liquidColor }} />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-4">
                     {ingredientKeys.map((key, index) => {
                         const ing = currentTea.ingredients[key]
                         const slotKey = `slot${index + 1}`
@@ -371,7 +366,11 @@ function App() {
             </div>
 
             {/* 푸터 */}
-            <p className="mt-6 text-white/30 text-xs">🍃 Detox Tea Blending Studio</p>
+            <div className="mt-12 text-[#3E2723]/40 text-xs font-serif flex items-center gap-2">
+                <span>Very Good Chocolate Studio</span>
+                <span className="block w-1 h-1 rounded-full bg-[#D4AF37]"></span>
+                <span>Est. 2024</span>
+            </div>
         </div>
     )
 }
