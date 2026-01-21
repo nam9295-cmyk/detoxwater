@@ -45,6 +45,7 @@ input[type="range"]::-webkit-slider-thumb {
   height: 24px;
   border-radius: 50%;
   margin-top: -8px;
+  background: var(--slider-color, #F59E0B);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
   border: 3px solid rgba(255, 255, 255, 0.3);
   cursor: grab;
@@ -74,6 +75,7 @@ input[type="range"]::-moz-range-thumb {
   width: 24px;
   height: 24px;
   border-radius: 50%;
+  background: var(--slider-color, #F59E0B);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
   border: 3px solid rgba(255, 255, 255, 0.3);
   cursor: grab;
